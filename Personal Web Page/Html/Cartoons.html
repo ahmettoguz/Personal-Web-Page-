@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../Css/MyCss.css" />
+    <script src="../Js/jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+        overflow: hidden;
+        background-color: black;
+      }
+      #bgImage {
+        position: absolute;
+        background-image: url(../Images/bart2.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100vh;
+        width: 1000vw;
+        top: 5px;
+      }
+
+      h1 {
+        z-index: 1;
+        position: relative;
+        letter-spacing: 4px;
+        font-style: italic;
+        font-size: 50px;
+        text-shadow: 3px 3px 3px violet;
+        margin-top: 20px;
+        /* margin-top: 80px; */
+      }
+
+      #container {
+        background-size: cover;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -65%);
+        background-color: white;
+        width: 400px;
+        height: 400px;
+        text-align: center;
+        align-items: center;
+        display: flex;
+        border-radius: 15px;
+      }
+
+      #left {
+        z-index: 2;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-250%, -65%);
+        background-color: white;
+        color: red;
+        width: 150px;
+        height: 200px;
+        text-align: center;
+        align-items: center;
+        display: flex;
+        border-radius: 15px;
+      }
+      #right {
+        z-index: 2;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(148%, -65%);
+        background-color: white;
+        color: red;
+        width: 150px;
+        height: 200px;
+        text-align: center;
+        align-items: center;
+        display: flex;
+        border-radius: 15px;
+      }
+
+      table {
+        width: 400px;
+        height: 200px;
+        font-size: 26px;
+        margin-top: 610px;
+        /* margin-top: 650px; */
+        background-color: aquamarine;
+        border-radius: 20px;
+        border-collapse: collapse;
+      }
+      td {
+        width: 200px;
+        font-size: 25px;
+        border: 1px solid black;
+      }
+      #left,
+      #right {
+        opacity: 0.3;
+      }
+
+      #left:hover,
+      #right:hover {
+        opacity: 0.7;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Top 7 Cartoons</h1>
+
+    <div id="left"><img src="../Images/leftArrow.png" alt="" /></div>
+    <div id="right"><img src="../Images/rightArrow.png" alt="" /></div>
+
+    <div id="bgImage"></div>
+
+    <div id="container">
+      <table>
+        <tr>
+          <td>Number:</td>
+          <td id="number"></td>
+        </tr>
+        <tr>
+          <td>Name:</td>
+          <td id="name"></td>
+        </tr>
+        <tr>
+          <td>Episode Number:</td>
+          <td id="episode"></td>
+        </tr>
+        <tr>
+          <td>Category:</td>
+          <td id="category"></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
+<script>
+  var index = 0;
+  cartoons = [
+    {
+      name: "Simpsons",
+      episodes: "725",
+      category: "Sitcom",
+      url: "url(../Images/cartoons/Simpsons.png)",
+    },
+    {
+      name: "SpongeBob",
+      episodes: "275",
+      category: "Animated Comedy",
+      url: " url(../Images/cartoons/SpongeBob.jpg)",
+    },
+    {
+      name: "Tom and Jerry",
+      episodes: "164",
+      category: "Animated Comedy",
+      url: "url(../Images/cartoons/TomandJerry.jpg)",
+    },
+    {
+      name: "Bugs Bunny",
+      episodes: "160",
+      category: "Fictional Animation",
+      url: "url(../Images/cartoons/BugsBunny.jpg)",
+    },
+    {
+      name: "Johnny Bravo",
+      episodes: "42",
+      category: "Animated Comedy",
+      url: "url(../Images/cartoons/JohnnyBravo.png)",
+    },
+    {
+      name: "Road Runner",
+      episodes: "26",
+      category: "Animated Anthology",
+      url: "url(../Images/cartoons/RoadRunner.jpeg)",
+    },
+    {
+      name: "FlapJack",
+      episodes: "46 ",
+      category: "Adventure",
+      url: "url(../Images/cartoons/FlapJack.jpg)",
+    },
+  ];
+
+  function setData() {
+    $("#container").css("background-image", cartoons[index].url);
+    $("#number").html(index + 1);
+    $("#name").html(cartoons[index].name);
+    $("#episode").html(cartoons[index].episodes);
+    $("#category").html(cartoons[index].category);
+  }
+
+  $(function () {
+    $("#bgImage").delay(1000).animate({ width: "100vw" }, 2000);
+    setData();
+
+    $("#left").click(function () {
+      console.log(index);
+      index--;
+      if (index == -1) index = 6;
+      console.log(index);
+      setData();
+    });
+    $("#right").click(function () {
+      index++;
+      if (index == 7) index = 0;
+      console.log(index);
+      setData();
+    });
+  });
+</script>

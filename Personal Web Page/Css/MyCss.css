@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+}
+h1 {
+  text-align: center;
+  color: red;
+}
+p {
+  font-size: 20px;
+  line-height: 30px;
+}
+span {
+  font-size: 20px;
+}
+code {
+  font-weight: 600;
+  color: darkgreen;
+  font-size: 18px;
+}
+
+@font-face {
+  font-family: myFont;
+  src: url(../Css/Hong\ Kong\ Script\ Brush.ttf);
+}
+@font-face {
+  font-family: myFont2;
+  src: url(../Css/Zallord\ free.ttf);
+}
+@font-face {
+  font-family: myFont3;
+  src: url(../Css/SnowBlue-OVVwd.otf);
+}
+@font-face {
+  font-family: myFont4;
+  src: url(../Css/QuickKissPersonalUse-PxlZ.ttf);
+}
+
+a,
+a:visited {
+  color: black;
+  text-decoration: none;
+}
+a:hover {
+  opacity: 0.7;
+}
+
+ul li a:hover {
+  background-color: gray;
+  opacity: 1;
+}

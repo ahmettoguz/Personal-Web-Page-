@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Puzzle</title>
+
+    <!-- fontawesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- <link
+      rel="stylesheet"
+      href="../Css/fontawesome-free-6.1.1-web/css/all.css"
+    /> -->
+
+    <!-- jquery cdn -->
+
+    <!-- <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script> -->
+    <script src="../JS/jquery-3.6.0.min.js"></script>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        background-image: linear-gradient(20deg, violet, yellow);
+      }
+
+      #main {
+        /* padding-top: 1vh; */
+        text-align: center;
+        height: 1000px;
+        min-width: 100px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      h1 {
+        color: red;
+        font-size: 60px;
+        font-style: italic;
+        text-shadow: 1px 1px 1px indigo, 3px 3px 5px blue;
+      }
+
+      table {
+        margin: 10px auto;
+        border: 1px solid black;
+        background-image: linear-gradient(45deg, rgb(99, 243, 135), gainsboro);
+        border-radius: 5px;
+        width: 600px;
+      }
+
+      td {
+        width: 90px;
+        height: 90px;
+        border: 3px solid coral;
+        border-radius: 50px;
+      }
+
+      i {
+        font-size: 36px;
+      }
+
+      #info {
+        font-size: 30px;
+        border: 3px solid rgb(1, 89, 189);
+        border-radius: 50px;
+        width: 70vw;
+        margin: 0 auto;
+        line-height: 50px;
+        text-shadow: 2px 2px 2px darkcyan, 3px 3px 3px black;
+      }
+
+      .column {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 15vw;
+        background-color: red;
+        border: 3px solid slateblue;
+        border-radius: 100px;
+        margin: 10px;
+      }
+
+      #leftColumn {
+        background-image: linear-gradient(45deg, #469fd3, #adf3f7);
+        color: midnightblue;
+        font-size: 30px;
+        font-weight: bold;
+        text-shadow: 5px 5px 5px steelblue;
+      }
+      #rightColumn {
+        background-image: linear-gradient(225deg, #c51f30, #f1c3c5);
+        color: whitesmoke;
+        text-shadow: 5px 5px 5px black;
+        font-size: 30px;
+        font-weight: bold;
+      }
+      .rulep1 {
+        background-image: linear-gradient(#469fd3, #adf3f7);
+        color: midnightblue;
+      }
+      .rulep2 {
+        background-image: linear-gradient(#c51f30, #f1c3c5);
+        color: whitesmoke;
+      }
+      #winInfo {
+        position: absolute;
+        left: 1;
+        top: 0;
+        background-color: red;
+        width: 400px;
+        text-align: center;
+        position: absolute;
+        font-size: 40px;
+        display: none;
+        box-shadow: 10px 10px 10px black;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <h1>Puzzle Game</h1>
+
+      <div style="display: flex; flex-direction: row" id="section">
+        <div id="leftColumn" class="column">
+          <p id="player1Info">
+            Player 1 <br /><br />
+            Score: <br />
+            0 Point
+          </p>
+        </div>
+        <table>
+          <tr>
+            <td><i id="0"></i></td>
+            <td><i id="1"></i></td>
+            <td><i id="2"></i></td>
+            <td><i id="3"></i></td>
+            <td><i id="4"></i></td>
+            <td><i id="5"></i></td>
+          </tr>
+          <tr>
+            <td><i id="6"></i></td>
+            <td><i id="7"></i></td>
+            <td><i id="8"></i></td>
+            <td><i id="9"></i></td>
+            <td><i id="10"></i></td>
+            <td><i id="11"></i></td>
+          </tr>
+          <tr>
+            <td><i id="12"></i></td>
+            <td><i id="13"></i></td>
+            <td><i id="14"></i></td>
+            <td><i id="15"></i></td>
+            <td><i id="16"></i></td>
+            <td><i id="17"></i></td>
+          </tr>
+          <tr>
+            <td><i id="18"></i></td>
+            <td><i id="19"></i></td>
+            <td><i id="20"></i></td>
+            <td><i id="21"></i></td>
+            <td><i id="22"></i></td>
+            <td><i id="23"></i></td>
+          </tr>
+          <tr>
+            <td><i id="24"></i></td>
+            <td><i id="25"></i></td>
+            <td><i id="26"></i></td>
+            <td><i id="27"></i></td>
+            <td><i id="28"></i></td>
+            <td><i id="29"></i></td>
+          </tr>
+        </table>
+
+        <div id="rightColumn" class="column">
+          <p id="player2Info">
+            Player 2 <br /><br />
+            Score: <br />
+            0 Point
+          </p>
+        </div>
+      </div>
+      <div id="info">information part</div>
+      <div id="winInfo">!!! Player 1 Won !!!</div>
+    </div>
+    <script>
+      var imageUrl = "../Images/puzzle.png";
+      var classes = [
+        "fas fa-cat",
+        "fas fa-crow",
+        "fas fa-dove",
+        "fas fa-dragon",
+        "fas fa-feather-alt",
+        "fas fa-fish",
+        "fas fa-paw",
+        "fas fa-spider",
+        "fas fa-tree",
+        "fas fa-campground",
+        "fas fa-burn",
+        "fas fa-hiking",
+        "fas fa-ice-cream",
+        "fas fa-snowboarding",
+        "fas fa-caravan",
+      ];
+      var counts = new Array(15);
+      var randomClasses = new Array(30);
+      var click = 0;
+      var turnOfGame;
+      var clicked1 = "-1";
+      var clicked2 = "-1";
+      var score1 = 0;
+      var score2 = 0;
+
+      function initializeArray() {
+        for (i = 0; i < 15; i++) counts[i] = 0;
+      }
+
+      function generateRandom() {
+        let n;
+
+        do {
+          n = Math.floor(Math.random() * 15);
+          if (counts[n] != 2) {
+            counts[n]++;
+            return n;
+          }
+        } while (counts[n] == 2);
+      }
+
+      function setRandomArray() {
+        let num;
+        for (let i = 0; i < 30; i++) {
+          num = generateRandom();
+          randomClasses[i] = classes[num];
+        }
+        // // sil
+        // {
+        //   for (i = 0; i < 30; i++) randomClasses[i] = "0";
+        // }
+      }
+
+      function setAllBackgrounds() {
+        for (let i = 0; i < 30; i++) {
+          $("#" + i)
+            .parent()
+            .css("background-image", "url(" + imageUrl + ")");
+          $("#" + i)
+            .parent()
+            .attr("name", "image");
+        }
+      }
+
+      function initalizeInformationPart() {
+        $("#info")
+          .html("1. Player Turn")
+          .addClass("rulep1")
+          .removeClass("rulep2");
+
+        //initialize other data
+        turnOfGame = "P1";
+        click = 0;
+        clicked1 = "-1";
+        clicked2 = "-1";
+        score1 = 0;
+        score2 = 0;
+      }
+
+      function initializeOpacity() {
+        $("i").css("opacity", "0");
+      }
+
+      function updateScore() {
+        $("#player1Info").html(
+          `
+          Player 1 <br /><br />
+            Score: <br />
+            ${score1} Point
+          `
+        );
+
+        $("#player2Info").html(
+          `
+          Player 2 <br /><br />
+            Score: <br />
+            ${score2} Point
+          `
+        );
+      }
+
+      function removeAllClass() {
+        console.log("All Classes are removed");
+        $("i").removeClass();
+      }
+
+      function test() {
+        // for (i = 0; i < 30; i++) {
+        //   console.log(i);
+        //   $("#" + i).addClass(randomClasses[i]);
+        //   $("#" + i).css("opacity", "1");
+        // }
+      }
+
+      function setWinInfoPosition() {
+        let o = $("td:eq(13)").offset();
+        o.top += 20;
+        $("#winInfo").css({ top: o.top, left: o.left });
+      }
+
+      function checkIfWin() {
+        bool = true;
+
+        $("td").each(function () {
+          if ($(this).attr("name") == "image") bool = false;
+        });
+
+        return bool;
+      }
+
+      function clickEvent() {
+        $("td").click(function () {
+          if (turnOfGame == "P1") {
+            if (click != 2) {
+              click++;
+
+              if ($(this).attr("name") == "none") {
+                console.log("pressed already");
+                click--;
+              } else {
+                //Starting of click event
+                $(this).css("background-image", "none");
+                $(this).attr("name", "none");
+
+                // set class
+                if (clicked1 == -1) {
+                  clicked1 = $(this).children().attr("id");
+                  $("#" + clicked1).addClass(randomClasses[clicked1]);
+                  $("#" + clicked1).animate({ opacity: "1" }, 500);
+
+                  // console.log(clicked1);
+                } else {
+                  //this is when player clicked 2. time
+
+                  clicked2 = $(this).children().attr("id");
+                  $("#" + clicked2).addClass(randomClasses[clicked2]);
+                  $("#" + clicked2).animate({ opacity: "1" }, 500);
+                  // console.log(clicked2);
+
+                  //check the match condition
+                  console.log($("#" + clicked1).attr("class"));
+                  console.log($("#" + clicked2).attr("class"));
+                  if (
+                    $("#" + clicked1).attr("class") !=
+                    $("#" + clicked2).attr("class")
+                  ) {
+                    //not match
+                    {
+                      //close images and remove classes initialize info part
+                      $("#" + clicked1)
+                        .parent()
+                        .delay(2000)
+                        .queue(function () {
+                          $(this).css(
+                            "background-image",
+                            "url(" + imageUrl + ")"
+                          );
+                          $("#" + clicked2)
+                            .parent()
+                            .css("background-image", "url(" + imageUrl + ")");
+
+                          //remove classes
+                          $("#" + clicked1).removeClass(
+                            randomClasses[clicked1]
+                          );
+                          $("#" + clicked1).animate({ opacity: "0" }, 500);
+                          $("#" + clicked2).removeClass(
+                            randomClasses[clicked2]
+                          );
+                          $("#" + clicked2).animate({ opacity: "0" }, 500);
+
+                          //set name
+                          $("td:eq(" + clicked1 + ")").attr("name", "image");
+                          $("td:eq(" + clicked2 + ")").attr("name", "image");
+
+                          //make initializiations for 2. player
+                          turnOfGame = "P2";
+                          click = 0;
+                          clicked1 = -1;
+                          clicked2 = -1;
+
+                          //change info part
+                          $("#info")
+                            .html("2. Player Turn")
+                            .removeClass("rulep1")
+                            .addClass("rulep2");
+
+                          $(this).dequeue();
+                        });
+                    }
+                  } else {
+                    //match
+
+                    //change score
+                    score1++;
+                    updateScore();
+
+                    //initialize clicks
+                    click = 0;
+                    clicked1 = -1;
+                    clicked2 = -1;
+
+                    //check if the player win
+                    if (checkIfWin()) {
+                      console.log("yendi");
+                      setWinInfoPosition();
+                      if (score1 > score2) {
+                        $("#winInfo").fadeIn(1500);
+                        $("#winInfo").addClass("rulep1");
+                        $("#winInfo").removeClass("rulep2");
+                        $("#winInfo").html("Player 1 Won !!!");
+                        $("#info").html("Press To Play Again");
+                        $("#winInfo")
+                          .animate({ "font-size": "50px" }, 1000)
+                          .delay(1000)
+                          .animate({ "font-size": "40px" }, 1000);
+                      } else if (score2 > score1) {
+                        $("#winInfo").fadeIn(1500);
+                        $("#winInfo").removeClass("rulep1");
+                        $("#winInfo").addClass("rulep2");
+                        $("#winInfo").html("Player 2 Won !!!");
+                        $("#info").html("Press To Play Again");
+                        $("#winInfo")
+                          .animate({ "font-size": "50px" }, 1000)
+                          .delay(1000)
+                          .animate({ "font-size": "40px" }, 1000);
+                      }
+
+                      //initialize all the game again to play again
+                      $("#info").click(function () {
+                        if ($("#info").html() == "Press To Play Again") {
+                          initializeArray();
+                          initalizeInformationPart();
+                          initializeOpacity();
+                          setRandomArray();
+                          setAllBackgrounds();
+                          updateScore();
+                          removeAllClass();
+                          test();
+                          $("#winInfo").fadeOut(1500);
+                        }
+                      });
+                    }
+                  }
+                }
+              }
+            }
+          } else if (turnOfGame == "P2") {
+            if (click != 2) {
+              click++;
+
+              if ($(this).attr("name") == "none") {
+                console.log("pressed already");
+                click--;
+              } else {
+                //Starting of click event
+                $(this).css("background-image", "none");
+                $(this).attr("name", "none");
+
+                // set class
+                if (clicked1 == -1) {
+                  clicked1 = $(this).children().attr("id");
+                  $("#" + clicked1).addClass(randomClasses[clicked1]);
+                  $("#" + clicked1).animate({ opacity: "1" }, 500);
+
+                  // console.log(clicked1);
+                } else {
+                  //this is when player clicked 2. time
+
+                  clicked2 = $(this).children().attr("id");
+                  $("#" + clicked2).addClass(randomClasses[clicked2]);
+                  $("#" + clicked2).animate({ opacity: "1" }, 500);
+                  // console.log(clicked2);
+
+                  //check the match condition
+                  if (
+                    $("#" + clicked1).attr("class") !=
+                    $("#" + clicked2).attr("class")
+                  ) {
+                    //not match
+                    {
+                      //close images and remove classes initialize info part
+                      $("#" + clicked1)
+                        .parent()
+                        .delay(2000)
+                        .queue(function () {
+                          $(this).css(
+                            "background-image",
+                            "url(" + imageUrl + ")"
+                          );
+                          $("#" + clicked2)
+                            .parent()
+                            .css("background-image", "url(" + imageUrl + ")");
+
+                          //remove classes
+                          $("#" + clicked1).removeClass(
+                            randomClasses[clicked1]
+                          );
+                          $("#" + clicked1).animate({ opacity: "0" }, 500);
+                          $("#" + clicked2).removeClass(
+                            randomClasses[clicked2]
+                          );
+                          $("#" + clicked2).animate({ opacity: "0" }, 500);
+
+                          //set name
+                          $("td:eq(" + clicked1 + ")").attr("name", "image");
+                          $("td:eq(" + clicked2 + ")").attr("name", "image");
+
+                          //make initializiations for 2. player
+                          turnOfGame = "P1";
+                          click = 0;
+                          clicked1 = -1;
+                          clicked2 = -1;
+
+                          //change info part
+                          $("#info")
+                            .html("1. Player Turn")
+                            .removeClass("rulep2")
+                            .addClass("rulep1");
+
+                          $(this).dequeue();
+                        });
+                    }
+                  } else {
+                    //match
+
+                    //change score
+                    score2++;
+                    updateScore();
+
+                    //initialize clicks
+                    click = 0;
+                    clicked1 = -1;
+                    clicked2 = -1;
+
+                    //check if the player win
+                    if (checkIfWin()) {
+                      setWinInfoPosition();
+                      if (score1 > score2) {
+                        $("#winInfo").fadeIn(1500);
+                        $("#winInfo").addClass("rulep1");
+                        $("#winInfo").removeClass("rulep2");
+                        $("#winInfo").html("Player 1 Won !!!");
+                        $("#info").html("Press To Play Again");
+                        $("#winInfo")
+                          .animate({ "font-size": "50px" }, 1000)
+                          .delay(1000)
+                          .animate({ "font-size": "40px" }, 1000);
+                      } else if (score2 > score1) {
+                        $("#winInfo").fadeIn(1500);
+                        $("#winInfo").addClass("rulep2");
+                        $("#winInfo").removeClass("rulep1");
+                        $("#winInfo").html("Player 2 Won !!!");
+                        $("#info").html("Press To Play Again");
+                        $("#winInfo")
+                          .animate({ "font-size": "50px" }, 1000)
+                          .delay(1000)
+                          .animate({ "font-size": "40px" }, 1000);
+                      }
+                      //initialize all the game again to play again
+                      $("#info").click(function () {
+                        if ($("#info").html() == "Press To Play Again") {
+                          initializeArray();
+                          initalizeInformationPart();
+                          initializeOpacity();
+                          setRandomArray();
+                          setAllBackgrounds();
+                          updateScore();
+                          removeAllClass();
+                          test();
+                          $("#winInfo").fadeOut(1500);
+                        }
+                      });
+                    }
+                  }
+                }
+              }
+            }
+          }
+        });
+      }
+
+      $(function () {
+        initializeArray();
+        initalizeInformationPart();
+        initializeOpacity();
+        setRandomArray();
+        setAllBackgrounds();
+        test();
+        clickEvent();
+      });
+    </script>
+  </body>
+</html>

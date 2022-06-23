@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../Css/MyCss.css" />
+    <script src="../Js/jquery-3.6.0.min.js"></script>
+    <title>Sports</title>
+    <style>
+      html {
+        background-color: rgb(60, 151, 219);
+        overflow: hidden;
+      }
+      h1 {
+        font-family: myFont2;
+        color: yellow;
+        text-shadow: 7px 5px 5px violet;
+        font-size: 30px;
+      }
+      #main {
+        display: none;
+        background-color: black;
+      }
+      .column {
+        width: 50%;
+        height: 50vh;
+      }
+      #skateboardContainer {
+        display: flex;
+        background-color: black;
+      }
+
+      #skiingContainer {
+        background-color: rgb(60, 151, 219);
+        display: flex;
+      }
+
+      @media (max-width: 1350px) {
+        #c1 {
+          width: 100% !important;
+        }
+        #first {
+          width: 100% !important;
+          padding-top: 90px !important;
+        }
+
+        #second {
+          width: 100% !important;
+        }
+        #secondd {
+          padding-top: 130px !important;
+          padding-left: 20px !important;
+        }
+      }
+
+      @media (max-width: 1000px) {
+        #c1 {
+          width: 100% !important;
+        }
+        #first {
+          width: 100% !important;
+          padding-top: 90px !important;
+        }
+        #img1 {
+          display: none;
+        }
+        #c2 {
+          display: none !important;
+        }
+        #second {
+          width: 100% !important;
+        }
+        #secondd {
+          padding-top: 120px !important;
+          padding-left: 20px !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <img
+      style="width: 100vw"
+      id="startImage"
+      src="../Images/all_sports.png"
+      alt=""
+    />
+
+    <section id="main">
+      <h1>My Favorite Sports</h1>
+
+      <div id="skateboardContainer">
+        <div id="img1" class="column" style="width: 500px">
+          <img style="height: 50vh" src="../Images/skateboard.jpg" alt="" />
+        </div>
+        <div class="column" id="c1">
+          <p
+            id="first"
+            style="
+              color: white;
+              font-family: myFont;
+              letter-spacing: 5px;
+              padding-top: 90px;
+              text-align: center;
+              text-shadow: 5px 5px 5px red;
+            "
+          >
+            Although it is difficult to stay on the skateboard at first, the
+            experience you will have when you start to skate will be unique.
+          </p>
+        </div>
+      </div>
+
+      <div id="skiingContainer">
+        <div class="column" id="second">
+          <p
+            id="secondd"
+            style="
+              font-family: myFont3;
+              color: darkblue;
+              text-shadow: 5px 5px 15px white;
+              text-align: center;
+              padding-top: 150px;
+              padding-left: 80px;
+              letter-spacing: 3px;
+            "
+          >
+            What could be more freezing than sliding down the mountain !!!
+          </p>
+        </div>
+        <div class="column" id="c2">
+          <img
+            style="float: right; background-color: rgb(60, 151, 219)"
+            src="../Images/skiGif.gif"
+            alt=""
+          />
+        </div>
+      </div>
+    </section>
+  </body>
+
+  <script>
+    $(function () {
+      $("#startImage").fadeOut(2000);
+      $("#main").delay(1000).fadeIn(3000);
+    });
+  </script>
+</html>

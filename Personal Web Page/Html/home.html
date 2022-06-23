@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- fontawesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="../Css/MyCss.css" />
+    <script src="../Js/jquery-3.6.0.min.js"></script>
+    <title>Home</title>
+    <style>
+      body {
+        background-image: url(../Images/bart4.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: rgb(244, 87, 80);
+      }
+
+      ul {
+        display: flex;
+        background-color: BLACK;
+        color: whitesmoke;
+        list-style: none;
+        height: 100px;
+        align-items: center;
+        justify-content: center;
+      }
+      li {
+        height: 100px;
+        display: flex;
+        width: 300px;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 30px;
+        font-family: monospace;
+      }
+      table {
+        font-family: "Courier New", Courier, monospace;
+        margin: 0 auto;
+        border-spacing: 0;
+        border: 3px solid black;
+        border-radius: 10px;
+        box-shadow: 10px 10px 10px black;
+      }
+      td {
+        border-bottom: 2px solid black;
+      }
+      input {
+        text-align: center;
+        vertical-align: middle;
+        height: 20px;
+        margin-right: 10px;
+        background-color: violet;
+        color: darkmagenta;
+        font-weight: bolder;
+        font-size: 20px;
+        width: 200px;
+      }
+      input:focus {
+        background-color: darkcyan;
+        color: lightcyan;
+        font-weight: 400;
+      }
+      textarea {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-right: 10px;
+        vertical-align: middle;
+        background-color: violet;
+        color: darkmagenta;
+        font-style: italic;
+        font-weight: bold;
+        font-size: 15px;
+      }
+      #contactMe {
+        font-family: myFont2;
+      }
+
+      #hello {
+        font-family: myFont;
+        padding-left: 100px;
+        font-size: 30px;
+        text-align: center;
+      }
+
+      .menu {
+        color: white !important;
+        padding: 23px;
+      }
+      @media (max-width: 1350px) {
+        li,
+        ul {
+          height: 80px;
+        }
+        body {
+          background-position: 0px 55px;
+        }
+      }
+
+      /* @media (max-width: 800px) { */
+      @media (max-width: 1000px) {
+        #hello {
+          padding-left: 0px;
+        }
+
+        body {
+          background-image: none;
+          background-color: rgb(244, 87, 80);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <nav>
+        <ul>
+          <li><a class="menu" href="../Html/Music.html">Music</a></li>
+          <li><a class="menu" href="./Cartoons.html">Cartoons</a></li>
+          <li><a class="menu" href="../Html/sports.html">Sports</a></li>
+          <li><a class="menu" href="puzzle.html">My Game</a></li>
+        </ul>
+      </nav>
+
+      <div id="hello">
+        Hello I am Ahmet <br />From Web Development Course <br />
+        It is fun to design my own website
+        <br />
+
+        <p
+          style="padding-top: 30px; font-size: 30px; margin-bottom: 10px"
+          id="contactMe"
+        >
+          You can contact me via
+        </p>
+
+        <div id="contactContainer">
+          <a
+            target="_blank"
+            href="https://github.com/ahmettoguz
+          "
+          >
+            <img style="width: 100px" src="../Images/GitHub-Logo.png" alt="" />
+          </a>
+
+          <a
+            target="_blank"
+            href="https://www.linkedin.com/in/ahmet-oguz-ergin/
+           "
+          >
+            <img
+              style="width: 100px"
+              src="../Images/linkedin_logo_2.png"
+              alt=""
+          /></a>
+          <br />
+
+          <a
+            style="
+              font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+                sans-serif;
+              font-size: 30px;
+            "
+            href="https://outlook.live.com/mail"
+            >oguz.ergin@ug.bilkent.edu.tr</a
+          >
+          <p
+            style="
+              margin-top: 10px;
+              margin-bottom: 30px;
+              font-size: 30px;
+              font-family: myFont2;
+            "
+          >
+            Or send me a lovely message
+          </p>
+
+          <table>
+            <tr>
+              <td>Name:</td>
+              <td><input type="text" /></td>
+            </tr>
+            <tr>
+              <td>Surname:</td>
+              <td><input type="text" /></td>
+            </tr>
+            <tr>
+              <td>Message:</td>
+              <td>
+                <textarea
+                  style="width: 200px"
+                  name=""
+                  id=""
+                  cols="27"
+                  rows="3"
+                ></textarea>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
+<script>
+  $(function () {
+    $("textarea").keydown(function (e) {
+      console.log(e.keyCode);
+      if (e.keyCode == 13) {
+        $(this).val("Your message has sent.");
+        $("input:eq(0)").val("");
+        $("input:eq(1)").val("");
+      }
+    });
+  });
+</script>
