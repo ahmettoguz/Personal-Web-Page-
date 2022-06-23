@@ -1,2 +1,2 @@
-# Personal-Web-Page-
+# Personal Web Page 
 Project for frontend course
